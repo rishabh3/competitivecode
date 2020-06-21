@@ -62,26 +62,24 @@ struct debug {
 
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define ll long long int
-#define pb push_back
-#define loop(i,n) for(i=0;i<n;i++)
-#define loopk(i, n, k) for(i=k;i<n;i++)
-
-template<typename... T>
-void read(T&... args) {
-	((cin >> args), ...);
-}
-
-template<typename... T>
-void write(T... args) {
-	((cout << args << " "), ...);
-}
 
 void testcase() {
-	//Implementation goes here
+	int n,m;
+	scanf("%d %d", &n, &m);
+	int res;
+	if(n%2 == 0) {
+		res = n/2*m;
+	}
+	else {
+		res = (n-1)/2*m + (m+1)/2;
+	}
+	cout << res <<endl;
 }
 
 
 int main() {
-	testcase();
+	int test;
+	scanf("%d", &test);
+	while(test--) testcase();
 	return 0;
 }

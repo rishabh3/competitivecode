@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<set>
 
 using namespace std;
 
@@ -77,11 +79,22 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n;
+    read(n);
+    set<ll> a;
+    for(int i=0;i<n;i++) {
+        ll temp;
+        read(temp);
+        a.insert(temp);
+    }
+    write(a.size());
+    cout << endl;
 }
 
 
 int main() {
-	testcase();
+	int test;
+    read(test);
+    while(test--) testcase();
 	return 0;
 }

@@ -77,11 +77,22 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+	string s;
+	read(s);
+	string a;
+	a+= s.at(0);
+	for(int i=1;i<s.length()-1;i+=2) {
+		a+=s.at(i);
+	}
+	a+=s.at(s.length()-1);
+	write(a);
+	cout << endl;
 }
 
 
 int main() {
-	testcase();
+	int t;
+	read(t);
+	while(t--) testcase();
 	return 0;
 }

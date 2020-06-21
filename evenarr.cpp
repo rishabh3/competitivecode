@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
@@ -76,12 +77,45 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+bool good_array(vector<int> a) {
+	int i;
+	loop(i, a.size()) {
+		if(i%2 != a[i]%2) return false;
+	}
+	return true;
+}
+
+int good_element(int index, int element) {
+	if(index%2 == element%2) return 1;
+	else if(index%2 != element%2 && element%2 != 0) return 0;
+	else return -1;
+}
+
 void testcase() {
-	//Implementation goes here
+	int n;
+	read(n);
+	int i;
+	int k;
+	int cnt = 0;
+	int zerocnt = 0;
+	loop(i, n) {
+		int temp;
+		read(temp);
+		k = good_element(i, temp);
+		if(k == 0) zerocnt++;
+		else if(k== -1) cnt++;
+	}
+	if((zerocnt+cnt) % 2 != 0) write(-1);
+	else if(zerocnt != cnt) write(-1);
+	else write(zerocnt);
+	cout << endl;
 }
 
 
+
 int main() {
-	testcase();
+	int t;
+	read(t);
+	while(t--) testcase();
 	return 0;
 }

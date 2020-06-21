@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
@@ -77,11 +78,36 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+	ll n, k;
+	read(n, k);
+	string s;
+	read(s);
+	int i;
+	ll m = 0;
+	ll p = 0;
+	vector<int> pos;
+	loop(i, n) {
+		char c = s.at(i);
+		if(c=='0') m++;
+		else {
+			if(m >= 2*k) p++;
+			m = 0;
+			pos.pb(i+1);
+		}
+	}
+	if(pos.empty()) {
+		for(int i=1;i<=n;i+=(k+1)) {
+			p++;
+		}
+	}
+	write(p);
+	cout << endl;
 }
 
 
 int main() {
-	testcase();
+	int t;
+	read(t);
+	while(t--) testcase();
 	return 0;
 }

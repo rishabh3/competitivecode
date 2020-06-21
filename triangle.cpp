@@ -62,13 +62,9 @@ struct debug {
 
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define ll long long int
-#define pb push_back
-#define loop(i,n) for(i=0;i<n;i++)
-#define loopk(i, n, k) for(i=k;i<n;i++)
 
-template<typename... T>
-void read(T&... args) {
-	((cin >> args), ...);
+bool check_in_range(ll a, ll b, ll x) {
+	return x >= a && x <= b;
 }
 
 template<typename... T>
@@ -77,11 +73,20 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+	ll a, b, c, d;
+	cin >> a >> b >> c >> d;
+	// side1 = b side2 = c side3 = c will always satisfy a+b>c triangular inequality
+	ll side1 = b;
+	ll side2 = c;
+	ll side3 = c;
+	write(side1, side2, side3);
+	cout << endl;
 }
 
 
 int main() {
-	testcase();
+	int test;
+	scanf("%d", &test);
+	while(test--) testcase();
 	return 0;
 }

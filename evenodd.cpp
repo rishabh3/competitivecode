@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdio>
 
 using namespace std;
 
@@ -62,22 +63,29 @@ struct debug {
 
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
 #define ll long long int
-#define pb push_back
-#define loop(i,n) for(i=0;i<n;i++)
-#define loopk(i, n, k) for(i=k;i<n;i++)
 
-template<typename... T>
-void read(T&... args) {
-	((cin >> args), ...);
+ll positive_odd_num(ll a) {
+	if(a%2 == 0) return a-1;
+	return a;
 }
 
-template<typename... T>
-void write(T... args) {
-	((cout << args << " "), ...);
+ll positive_even_num(ll a) {
+	return a%2==0 ? a: a-1;
 }
 
 void testcase() {
-	//Implementation goes here
+	int n;
+	cin >> n;
+	int i=0;
+	ll x;
+	while(n) {
+		x = (i%2 == 0) ? positive_even_num(n): positive_odd_num(n);
+		if(x <= 0) break;
+		n-=x;
+		i++;
+	}
+	if(i%2==0) puts("Ehab");
+	else puts("Mahmoud");
 }
 
 

@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -76,12 +78,23 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+ll is_max_elem(ll a, ll max_e) {
+    return a == max_e;
+}
+
 void testcase() {
 	//Implementation goes here
+    ll a,b,c;
+    read(a,b,c);
+    ll res = (a + b + c)/2;
+    write(res);
+    cout << endl;
 }
 
 
 int main() {
-	testcase();
+    int queries;
+    read(queries);
+    while(queries--) testcase();
 	return 0;
 }

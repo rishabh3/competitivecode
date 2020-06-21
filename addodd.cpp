@@ -76,12 +76,25 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+
 void testcase() {
-	//Implementation goes here
+	ll a,b;
+	read(a, b);
+	ll diff = b-a;
+	int moves = 0;
+	if(diff == 0) moves=0;
+	else if(diff%2 != 0 && diff > 0 ) moves++;
+	else if(diff%2 == 0 && diff < 0) moves++;
+	else moves += 2;
+	write(moves);
+	cout << endl;
 }
 
 
 int main() {
-	testcase();
+	int test;
+	read(test);
+	int i;
+	loop(i,test) testcase();
 	return 0;
 }

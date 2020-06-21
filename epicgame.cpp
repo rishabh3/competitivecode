@@ -76,8 +76,32 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+int gcd(int a, int b) {
+    if(a < b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+    if(b == 0) return a;
+    return gcd(b, a%b);
+}
+
 void testcase() {
-	//Implementation goes here
+    int a, b, n;
+    read(a,b,n);
+    int i = 0;
+    int k = a;
+    while(n) {
+        if(i%2 == 0) k = a;
+        else k =b;
+        int stones_to_remove = gcd(k,n);
+        if(stones_to_remove > n) break;
+        n-=stones_to_remove;
+        i++;
+        // debug() << imie(k) << imie(stones_to_remove) << imie(n);
+    }
+    write((i-1)%2);
+    cout << endl;
 }
 
 

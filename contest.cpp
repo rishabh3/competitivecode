@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdio>
 
 using namespace std;
 
@@ -77,7 +78,10 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+	int n,m , k;
+	read(n, m, k);
+	if(m >= n && k >= n) puts("YES");
+	else puts("NO");
 }
 
 

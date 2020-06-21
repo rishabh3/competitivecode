@@ -77,11 +77,30 @@ void write(T... args) {
 }
 
 void testcase() {
+    int hr, min;
+    read(hr, min);
+    int target_hr = 24;
+    int target_min = 0;
+    int reshr, resmin;
+    if(target_min < min) {
+        resmin = 60-min;
+        target_hr--;
+        reshr = target_hr - hr;
+    }
+    else {
+        resmin = target_min - min;
+        reshr = target_hr - hr;
+    }
+    int res = reshr *60+resmin;
+    write(res);
+    cout << endl;
 	//Implementation goes here
 }
 
 
 int main() {
-	testcase();
+    int test;
+    cin >> test;
+    while(test--) testcase();
 	return 0;
 }

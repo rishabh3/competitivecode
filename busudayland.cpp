@@ -1,4 +1,7 @@
 #include<iostream>
+#include<vector>
+#include<string>
+#include<cstdio>
 
 using namespace std;
 
@@ -61,23 +64,39 @@ struct debug {
 };
 
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define ll long long int
-#define pb push_back
-#define loop(i,n) for(i=0;i<n;i++)
-#define loopk(i, n, k) for(i=k;i<n;i++)
 
-template<typename... T>
-void read(T&... args) {
-	((cin >> args), ...);
-}
-
-template<typename... T>
-void write(T... args) {
-	((cout << args << " "), ...);
+bool checkAndPass(vector<string> &h) {
+	string to_find = "OO";
+	string to_replace_with = "++";
+	for(int i=0;i<h.size();i++) {
+		string temp = h[i];
+		size_t found = temp.find(to_find);
+		if(found != string::npos) {
+			// Found;
+			temp.replace(found, 2, to_replace_with);
+			h[i] = temp;
+			return true;
+		}
+	}
+	return false;
 }
 
 void testcase() {
-	//Implementation goes here
+	int n;
+	scanf("%d", &n);
+	vector<string> h;
+	for(int i=0;i < n;i++) {
+		string temp;
+		cin >> temp;
+		h.push_back(temp);
+	}
+	if(checkAndPass(h)) {
+		puts("YES");
+		for(auto it=h.cbegin();it!=h.cend();it++) {
+			cout << *it << endl;
+		}
+	}
+	else puts("NO");
 }
 
 

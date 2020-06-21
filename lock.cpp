@@ -76,8 +76,33 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+int min_move(char a, char b) {
+	if(a == b) return 0;
+	int ax = a - '0';
+	int bx = b - '0';
+	int min_val = min(ax, bx);
+	int temp;
+	if(min_val == ax) {
+		temp = ax+10-bx;
+	}
+	else {
+		temp = bx+10-ax;
+	}
+	return min(abs(bx-ax), temp);
+}
+
 void testcase() {
-	//Implementation goes here
+	int n;
+	read(n);
+	string start, end;
+	read(start, end);
+	int i;
+	int moves = 0;
+	loop(i, n) {
+		moves += min_move(start.at(i), end.at(i));
+	}
+	write(moves);
+	cout << endl;
 }
 
 

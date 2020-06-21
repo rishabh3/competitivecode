@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -61,27 +63,25 @@ struct debug {
 };
 
 #define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
-#define ll long long int
-#define pb push_back
-#define loop(i,n) for(i=0;i<n;i++)
-#define loopk(i, n, k) for(i=k;i<n;i++)
-
-template<typename... T>
-void read(T&... args) {
-	((cin >> args), ...);
-}
-
-template<typename... T>
-void write(T... args) {
-	((cout << args << " "), ...);
-}
+#define MAX 1e+9
 
 void testcase() {
-	//Implementation goes here
+	int n;
+	scanf("%d", &n);
+	vector<int> s(n);
+	for(int i=0;i<n;i++) scanf("%d", &s[i]);
+	sort(s.begin(), s.end());
+	int min_e = MAX;
+	for(int i=0;i<n-1;i++) {
+		min_e = min(min_e, abs(s[i+1]-s[i]));
+	}
+	cout << min_e << endl;
 }
 
 
 int main() {
-	testcase();
+	int test;
+	scanf("%d", &test);
+	while(test--) testcase();
 	return 0;
 }

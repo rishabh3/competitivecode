@@ -77,7 +77,20 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    ll d1, d2, d3, d4;
+    read(d1, d2, d3, d4);
+    ll cnt256 = min(min(d3, d4), d1);
+    ll res;
+    if(d1 == cnt256) {
+        res = 256*d1;
+    }
+    else {
+        res = 256*cnt256;
+        ll cnt32 = min(d1-cnt256, d2);
+        res+= 32*cnt32;
+    }
+    write(res);
+    cout << endl;
 }
 
 

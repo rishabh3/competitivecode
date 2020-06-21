@@ -78,6 +78,10 @@ void write(T... args) {
 
 void testcase() {
 	//Implementation goes here
+    ll n, k, l, c, d, p, nl, np;
+    read(n, k, l, c, d, p, nl, np);
+    ll temp = min(min((k*l)/nl, c*d), p/np);
+    cout << temp/n << endl;
 }
 
 

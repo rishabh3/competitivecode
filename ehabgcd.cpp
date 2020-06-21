@@ -76,12 +76,38 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+ll gcd(ll a, ll b) {
+    if(a < b) {
+        ll temp = a;
+        a = b;
+        b = temp;
+    }
+    if(b == 0) return a;
+    return gcd(b, a%b);
+}
+
 void testcase() {
 	//Implementation goes here
+    ll x;
+    read(x);
+    ll a=1, b=x-1;
+//    for(a=1;a<x;a++) {
+ //       b = x-a;
+  //      hcf = gcd(a,b);
+   //     lcm = (b/hcf)*a;
+        //debug() << imie(b) << imie(a) << imie(hcf) << imie(lcm) << imie(x);
+    //    if(hcf+lcm == x) {
+     //       break;
+      //  }
+    //}
+    write(a,b);
+    cout  << endl;
 }
 
 
 int main() {
-	testcase();
+    int test;
+    read(test);
+    while(test--) testcase();
 	return 0;
 }

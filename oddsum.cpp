@@ -77,11 +77,27 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+	int n;
+	read(n);
+	int i;
+	int cnteven = 0, cntodd = 0;
+	loop(i, n) {
+		int temp;
+		read(temp);
+		if(temp%2==0) cnteven++;
+		else cntodd++;
+	}
+	if(cntodd==0) write("NO");
+	else if(cnteven==0 && n%2 == 0) write("NO");
+	else write("YES");
+	cout  << endl;
 }
 
 
 int main() {
-	testcase();
+	int test;
+	read(test);
+	int i;
+	loop(i, test) testcase();
 	return 0;
 }

@@ -78,6 +78,9 @@ void write(T... args) {
 
 void testcase() {
 	//Implementation goes here
+    ll n;
+    read(n);
+    cout << 25 << endl;
 }
 
 

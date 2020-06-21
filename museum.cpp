@@ -77,7 +77,17 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    string s;
+    read(s);
+    char c = 'a';
+    int min_rot = 0;
+    for(auto it=s.begin(); it != s.end(); it++) {
+        int temp = 26 + min(*it, c) - max(*it, c);
+        min_rot += min(abs(*it-c), temp);
+        c = *it;
+    }
+    write(min_rot);
+    cout << endl;
 }
 
 

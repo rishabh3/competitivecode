@@ -1,4 +1,5 @@
 #include<iostream>
+#include<map>
 
 using namespace std;
 
@@ -77,7 +78,19 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+	int a1, a2, a3, a4;
+	read(a1, a2, a3, a4);
+	map<char, int> mem;
+	mem['1'] = a1;
+	mem['2'] = a2;
+	mem['3'] = a3;
+	mem['4'] = a4;
+	string s;
+	read(s);
+	int total_cal = 0;
+	for(auto it=s.cbegin();it != s.cend(); it++) total_cal += mem[*it];
+	write(total_cal);
+	cout << endl;
 }
 
 

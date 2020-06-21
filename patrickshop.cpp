@@ -78,6 +78,14 @@ void write(T... args) {
 
 void testcase() {
 	//Implementation goes here
+    ll d1, d2, d3;
+    read(d1, d2, d3);
+    ll temp1 = 2*d1+2*d2;
+    ll temp2 = d1+d2+d3;
+    ll temp3 = 2*(min(d1, d2)+d3);
+    ll res = min(min(temp1, temp2), temp3);
+    write(res);
+    cout << endl;
 }
 
 

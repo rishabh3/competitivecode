@@ -77,7 +77,18 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n;
+    read(n);
+    string s;
+    read(s);
+    int cntL=0, cntR=0;
+    for(auto it=s.begin();it!=s.end();it++) {
+        if(*it == 'L') cntL++;
+        else cntR++;
+    }
+    int res = cntR + cntL +1;
+    write(res);
+    cout << endl;
 }
 
 

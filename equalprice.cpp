@@ -77,11 +77,25 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n;
+    read(n);
+    int i;
+    ll sum = 0;
+    loop(i, n) {
+        ll temp;
+        read(temp);
+        sum += temp;
+    }
+    ll ans = sum/n;
+    while(ans*n < sum) ans++;
+    write(ans);
+    cout << endl;
 }
 
 
 int main() {
-	testcase();
+    int test;
+    read(test);
+    while(test--) testcase();
 	return 0;
 }
