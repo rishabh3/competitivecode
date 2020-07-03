@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdio>
 
 using namespace std;
 
@@ -65,7 +66,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,7 +78,17 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    string s;
+    read(s);
+    bool print=false;
+    for(auto it=s.cbegin();it != s.cend();it++) {
+        if(*it == 'H' || *it == 'Q' || *it == '9') {
+            print = true;
+            break;
+        }
+    }
+    if(print) puts("YES");
+    else puts("NO");
 }
 
 

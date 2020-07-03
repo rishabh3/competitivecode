@@ -1,4 +1,9 @@
 #include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
+#include<map>
+
 
 using namespace std;
 
@@ -65,7 +70,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -77,12 +81,74 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+int count_bit(ll a) {
+    return (int)log2(a)+1;
+}
+
+pair<int, int> findMaxEntry(map<int, int> sampleMap) {
+    pair<int, int> entryWithMaxValue = make_pair(0, 0);
+    map<int, int>::iterator currentEntry;
+    for (currentEntry = sampleMap.begin(); 
+         currentEntry != sampleMap.end(); 
+         ++currentEntry) {
+        if (currentEntry->second 
+            > entryWithMaxValue.second) { 
+  
+            entryWithMaxValue 
+                = make_pair( 
+                    currentEntry->first, 
+                    currentEntry->second); 
+        } 
+    }
+    return entryWithMaxValue;
+}
+
+int countSetBits(ll n) {
+    int count = 0;
+    while(n) {
+        n &= (n-1);
+        count++;
+    }
+    return count;
+}
+
 void testcase() {
-	//Implementation goes here
+    int n,k;
+    read(n,k);
+    vector<ll> a(n);
+    int i;
+    map<int, int> x;
+    ll maxval = 0;
+    loop(i, n) {
+        read(a[i]);
+        int cbit = count_bit(a[i]);
+        int csetbit = countSetBits(a[i]);
+        if(csetbit == k && maxval < a[i]) maxval = a[i];
+        if(x.find(cbit) == x.end()) x[cbit] = 1;
+        else x[cbit]++;
+    }
+    //debug() << imie(maxval);
+    pair<int, int> max_pair = findMaxEntry(x); 
+    int mval = max_pair.second;
+    ll res;
+    if(maxval == 0 && mval == k) {
+        res = (1 << k) - 1;
+    }
+    else if(maxval == 0 && k==1) {
+        res = (1 << (mval-1));
+    }
+    else {
+        res = maxval;
+    }
+    write(res);
+    cout << endl;
 }
 
 
 int main() {
+    int test;
+    read(test);
+    while(test--)
 	testcase();
 	return 0;
 }

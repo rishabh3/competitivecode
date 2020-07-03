@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdio>
 
 using namespace std;
 
@@ -65,7 +66,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,7 +78,26 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    string s;
+    read(s);
+    int count = 1;
+    char prev = s.at(0);
+    bool x=false;
+    for(auto it=s.cbegin() + 1; it!=s.cend();it++) {
+        //debug() << imie(count) << imie(*it) << imie(prev);
+        if(count >= 7) {
+            x = true;
+        }
+        if(*it == prev) count++;
+        else count = 1;
+        //debug() << imie(count) << imie(*it) << imie(prev);
+        prev = *it;
+    }
+    if(!x && count >= 7) {
+        x = true;
+    }
+    if(x) puts("YES");
+    else puts("NO");
 }
 
 

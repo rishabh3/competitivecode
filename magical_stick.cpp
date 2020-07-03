@@ -78,11 +78,17 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    ll t;
+    read(t);
+    ll count = (t+1)/2;
+    write(count);
+    cout << endl;
 }
 
 
 int main() {
-	testcase();
+    test{
+	    testcase();
+    }
 	return 0;
 }

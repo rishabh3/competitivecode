@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -65,7 +67,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,11 +79,49 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n, k;
+    read(n,k);
+    vector<ll> bag(n);
+    int i;
+    loop(i, n) {
+        read(bag[i]);
+    }
+    sort(bag.begin(), bag.end());
+    vector<int> nums(k);
+    int x = 0;
+    loop(i, k) {
+        read(nums[i]);
+        x += nums[i] - 1;
+    }
+    sort(nums.begin(), nums.end(), greater<int>());
+    ll sum = 0;
+    ll max_elem;
+    ll min_elem;
+    int prev = 0;
+    i = 0;
+    int j = 0;
+    int m = x;
+    while(i < k) {
+       // debug() << imie(i) << imie(j) << imie(m) << imie(max_elem) << imie(min_elem);
+        max_elem = bag.at(m);
+        if(j >= x) j = m;
+        min_elem = bag.at(j);
+        prev = nums.at(i)-1;
+        sum += (max_elem + min_elem);
+        j = j+prev;
+        m++;
+        i++;
+        //debug() << imie(max_elem) << imie(min_elem) << imie(sum) << imie(j) << imie(m) << imie(i);
+    }
+    write(sum);
+    cout << endl;
 }
 
 
 int main() {
+    int test;
+    read(test);
+    while(test--)
 	testcase();
 	return 0;
 }

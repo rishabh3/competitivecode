@@ -1,4 +1,6 @@
 #include<iostream>
+#include<algorithm>
+#include<vector>
 
 using namespace std;
 
@@ -65,7 +67,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,11 +79,57 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int m, n;
+    read(n, m);
+    vector<ll> seq(n);
+    int i;
+    int max_len = 0;
+    loop(i,n) {
+        read(seq[i]);
+    }
+    if(m > *max_element(seq.begin(), seq.end()) || m < *min_element(seq.begin(), seq.end()) || find(seq.begin(), seq.end(), m) != seq.end()) {
+        max_len = -1;
+    }
+    else {
+        i = 0;
+        int j = n-1;
+        max_len = n;
+        while(i < j) {
+            if(seq[i] < m && seq[j] > m) {
+                i++;
+                j--;
+            }
+            else if(seq[i] > m) {
+                max_len -= (i+1);
+                //int temp = max(i+1, max_len);
+                //if(temp != max_len) {
+                //    max_len = temp;
+                //    break;
+                //}
+                max_len = max(i+1, max_len);
+                i++;
+            }
+            else if(seq[j] < m) {
+                max_len -= (n-j);
+                //int temp = max(n-j, max_len);
+                //if(temp != max_len) {
+                //    max_len = temp;
+                //    break;
+                //}
+                max_len = max(n-j, max_len);
+                j--;
+            }
+        }
+    }
+    write(max_len);
+    cout << endl;
 }
 
 
 int main() {
+    int test;
+    read(test);
+    while(test--)
 	testcase();
 	return 0;
 }

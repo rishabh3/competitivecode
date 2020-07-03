@@ -1,4 +1,6 @@
 #include<iostream>
+#include<stack>
+#include<cstdio>
 
 using namespace std;
 
@@ -65,7 +67,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -77,12 +78,34 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
-void testcase() {
-	//Implementation goes here
+void testcase(){
+    string s;
+    stack<char> sp;
+    read(s);
+    int i = 0;
+    int cnt = 0;
+    while(i < s.length()) {
+        if(sp.empty()) sp.push(s.at(i));
+        else {
+            if(sp.top() != s.at(i)) {
+                cnt++;
+                sp.pop();
+            }
+            else {
+                sp.push(s.at(i));
+            }
+        }
+        i++;
+    }
+    if(cnt % 2 == 0) puts("NET");
+    else puts("DA");
 }
 
 
 int main() {
+    int test;
+    read(test);
+    while(test--)
 	testcase();
 	return 0;
 }

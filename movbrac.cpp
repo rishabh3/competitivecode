@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stack>
 
 using namespace std;
 
@@ -78,11 +79,29 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n;
+    read(n);
+    string s;
+    read(s);
+    stack<char> sp;
+    int unmatched = 0;
+    for(auto it=s.begin();it!=s.end();it++) {
+        if(*it == '(') sp.push(*it);
+        if(*it == ')') {
+            if(sp.empty()) unmatched++;
+            else {
+                sp.pop();
+            }
+        }
+    }
+    write(unmatched);
+    cout << endl;
 }
 
 
 int main() {
-	testcase();
+    test{
+        testcase();
+    }
 	return 0;
 }

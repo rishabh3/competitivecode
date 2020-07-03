@@ -65,7 +65,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,11 +77,34 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    ll x, y, n;
+    read(x, y, n);
+    ll high = n/x;
+    ll res;
+    if(high == 0) {
+        res = y;
+    }
+    else {
+        bool flag = true;
+        while(flag) {
+            res = high*x+y;
+            if(res > n) {
+                high--;
+            }
+            else {
+                flag = false;
+            }
+        }
+    }
+    write(res);
+    cout << endl;
 }
 
 
 int main() {
+    int test;
+    read(test);
+    while(test--)
 	testcase();
 	return 0;
 }

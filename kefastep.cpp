@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
@@ -65,7 +66,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,7 +78,31 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n;
+    read(n);
+    int i;
+    vector<ll> money(n);
+    loop(i, n) 
+    {
+        read(money[i]);
+    }
+    i = 0;
+    int prevSize = 0;
+    int currentSize = 1;
+    while(i < n-1) {
+        //debug() << imie(i) << imie(prevSize) << imie(currentSize);
+        if(money[i] <= money[i+1])
+        {
+            currentSize++;
+        }
+        else {
+            prevSize = max(prevSize, currentSize);
+            currentSize = 1;
+        }
+        i++;
+    }
+    write(max(prevSize, currentSize));
+    cout << endl;
 }
 
 

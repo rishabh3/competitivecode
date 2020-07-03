@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -65,7 +67,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,7 +79,27 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n;
+    read(n);
+    vector<int> s;
+    int temp;
+    int i;
+    int sum = 0;
+    loop(i, n) {
+        read(temp);
+        s.pb(temp);
+        sum += temp;
+    }
+    sort(s.begin(), s.end(), greater<int>());
+    int run_sum = 0;
+    int element_picked = 0;
+    for(auto it = s.cbegin();it != s.cend(); it++) {
+        if(run_sum > (sum-run_sum)) break;
+        run_sum += *it;
+        element_picked++;
+    }
+    write(element_picked);
+    cout << endl;
 }
 
 

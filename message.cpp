@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 using namespace std;
 
@@ -65,7 +66,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -78,7 +78,40 @@ void write(T... args) {
 }
 
 void testcase() {
-	//Implementation goes here
+    int n,m;
+    read(n,m);
+    int i;
+    vector<int> msg1(n), msg2(m);
+    loop(i, n) {
+        read(msg1[i]);
+    }
+    loop(i, m) {
+        read(msg2[i]);
+    }
+    int msg1_index = 0;
+    int msg2_index = 0;
+    int count = 0;
+    int sum1 = msg1[msg1_index];
+    int sum2 = msg2[msg2_index];
+    while(msg1_index < n || msg2_index < m) {
+        if(sum1 < sum2) {
+            msg1_index++;
+            sum1 += msg1[msg1_index];
+        }
+        else if (sum1 > sum2) {
+            msg2_index++;
+            sum2 += msg2[msg2_index];
+        }
+        else {
+            msg1_index++;
+            msg2_index++;
+            sum1 = msg1[msg1_index];
+            sum2 = msg2[msg2_index];
+            count++;
+        }
+    }
+    write(count);
+    cout << endl;
 }
 
 

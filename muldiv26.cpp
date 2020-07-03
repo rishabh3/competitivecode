@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cmath>
 
 using namespace std;
 
@@ -77,12 +78,49 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+ll get_nearest_expo(ll n) {
+   return (ll) log(n)/log(6); 
+}
+
+bool is_power(ll n) {
+    ll res1 = (ll) log(n)/log(6);
+    double res2 = log(n) / log(6);
+    return res1 == res2;
+}
+
+bool prime_factor(ll n, ll &count2, ll &count3) {
+    while(n%2 == 0) {
+        count2++;
+        n /=2;
+    }
+    while(n%3 == 0) {
+        count3++;
+        n /= 3;
+    }
+    if(n > 1) return false;
+    return true;
+}
+
+
 void testcase() {
-	//Implementation goes here
+    ll n, res;
+    read(n);
+    ll count2=0, count3=0;
+    bool flag = prime_factor(n, count2, count3);
+    if(!flag) res = -1;
+    else {
+        if(count2 > count3) res = -1;
+        else if(count2 < count3) res = count3-count2 + count3;
+        else res = count2;
+    }
+    write(res);
+    cout << endl;
 }
 
 
 int main() {
-	testcase();
+    test {
+	    testcase();
+    }
 	return 0;
 }

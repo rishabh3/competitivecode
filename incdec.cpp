@@ -1,4 +1,9 @@
 #include<iostream>
+#include<map>
+#include<vector>
+#include<set>
+#include<algorithm>
+#include<cstdio>
 
 using namespace std;
 
@@ -65,7 +70,6 @@ struct debug {
 #define pb push_back
 #define loop(i,n) for(i=0;i<n;i++)
 #define loopk(i, n, k) for(i=k;i<n;i++)
-#define test ll t; cin >> t; while(t--)
 
 template<typename... T>
 void read(T&... args) {
@@ -77,12 +81,59 @@ void write(T... args) {
 	((cout << args << " "), ...);
 }
 
+bool verify(set<ll> a, map<ll, int> x, ll max_elem) {
+    if(x[max_elem] > 1) return false;
+    for(auto it = a.begin();it != a.end(); it++) {
+        if(x[*it] > 2) return false;
+    }
+    return true;
+}
+
 void testcase() {
-	//Implementation goes here
+    ll n;
+    read(n);
+    vector<ll> a(n);
+    set<ll> b;
+    map<ll, int> p;
+    ll i;
+    loop(i, n) {
+        read(a[i]);
+        b.insert(a[i]);
+        if(p.find(a[i]) == p.end()) p[a[i]] = 1;
+        else p[a[i]]++;
+    }
+    if(a.size() == b.size()) {
+        sort(a.begin(), a.end());
+        puts("YES");
+        loop(i,n) {
+            write(a[i]);
+        }
+        cout << endl;
+    }
+    else {
+        if(verify(b,p,*max_element(a.begin(), a.end()))) {
+            puts("YES");
+            for(auto it=b.begin();it!=b.end();it++) {
+                write(*it);
+            }
+            for(auto it = b.rbegin();it!=b.rend();it++) {
+                if(p[*it] >1) {
+                    write(*it);
+                }
+            }
+            cout << endl;
+        }
+        else {
+            puts("NO");
+        }
+    }
 }
 
 
 int main() {
+    int test;
+    read(test);
+    while(test--)
 	testcase();
 	return 0;
 }
